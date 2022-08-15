@@ -17,4 +17,11 @@ export default StyleSheet.create({
     fontSize: 14,
     color: '#ffffff',
   },
+  timerIndicatorView: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    height: 5,
+    backgroundColor: 'white',
+  },
 });

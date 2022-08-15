@@ -13,6 +13,7 @@ import type {
 const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
   ({ defaultDuration = 3000 }, ref) => {
     const offset = React.useRef(new Animated.Value(0)).current;
+    const timerOffset = React.useRef(new Animated.Value(0.4)).current;
 
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
@@ -22,6 +23,19 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const [snackbarActions, setSnackbarActions] = React.useState<
       ActionButtonProps[] | undefined
     >();
+
+    const handleTimerAnimation = React.useCallback(
+      (duration?: number) => {
+        timerOffset.setValue(1);
+
+        Animated.timing(timerOffset, {
+          toValue: 0,
+          duration: duration ?? defaultDuration,
+          useNativeDriver: false,
+        }).start();
+      },
+      [defaultDuration, timerOffset]
+    );
 
     const handleOutAnimation = React.useCallback(
       (duration?: number) => {
@@ -49,12 +63,14 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           easing: Easing.linear,
           useNativeDriver: false,
         }).start(({ finished }) => {
+          handleTimerAnimation(duration);
+
           if (finished) {
             handleOutAnimation(duration);
           }
         });
       },
-      [handleOutAnimation, offset]
+      [handleOutAnimation, handleTimerAnimation, offset]
     );
 
     const handleSnackbarTimer = React.useCallback(
@@ -125,6 +141,15 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         {snackbarActions?.map((action, index) => (
           <ActionButton key={index.toString()} {...action} />
         ))}
+        <Animated.View
+          style={{
+            ...styles.timerIndicatorView,
+            width: timerOffset.interpolate({
+              inputRange: [0, 1],
+              outputRange: ['0%', '100%'],
+            }),
+          }}
+        />
       </Animated.View>
     );
   }
