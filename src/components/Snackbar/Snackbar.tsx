@@ -29,7 +29,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           toValue: 0,
           duration: 150,
           delay: duration ?? defaultDuration,
-          easing: Easing.ease,
+          easing: Easing.linear,
           useNativeDriver: false,
         }).start(({ finished }) => {
           if (finished) {
@@ -46,7 +46,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         Animated.timing(offset, {
           toValue: 1,
           duration: 150,
-          easing: Easing.ease,
+          easing: Easing.linear,
           useNativeDriver: false,
         }).start(({ finished }) => {
           if (finished) {
