@@ -8,7 +8,13 @@ const MainPage: React.FC = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => showMessage({ message: 'Hello World!' })}
+        onPress={() =>
+          showMessage({
+            message: 'Hello World!',
+            duration: 5000,
+            actions: [{ title: 'CANCEL' }, { title: 'DONE' }],
+          })
+        }
       >
         <Text>Main Page!</Text>
       </TouchableOpacity>
