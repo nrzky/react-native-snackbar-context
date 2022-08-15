@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "react-native-snackbar-context": ["./src/index"]
+      "react-native-snackbar-context": ["../src/index"]
     }
   },
   "extends": "expo/tsconfig.base", 
 }
+ 
