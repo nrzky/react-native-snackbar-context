@@ -1,0 +1,22 @@
+{
+  "name": "react-native-snackbar-context-example",
+  "displayName": "SnackbarContext Example",
+  "expo": {
+    "name": "react-native-snackbar-context-example",
+    "slug": "react-native-snackbar-context-example",
+    "description": "Example app for react-native-snackbar-context",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
