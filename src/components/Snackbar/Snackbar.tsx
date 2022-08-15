@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Animated } from 'react-native';
+import { Text, Animated, Easing } from 'react-native';
 
 import ActionButton from '../ActionButton/ActionButton';
 import styles from './Snackbar.styled';
@@ -24,8 +24,9 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       (duration?: number) => {
         Animated.timing(offset, {
           toValue: 0,
-          duration: 300,
+          duration: 200,
           delay: duration ?? defaultDuration,
+          easing: Easing.ease,
           useNativeDriver: false,
         }).start(({ finished }) => {
           if (finished) {
@@ -39,10 +40,10 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const handleInAnimation = React.useCallback(
       (duration?: number) => {
         setVisible(true);
-
         Animated.timing(offset, {
           toValue: 1,
-          duration: 300,
+          duration: 200,
+          easing: Easing.ease,
           useNativeDriver: false,
         }).start(({ finished }) => {
           if (finished) {

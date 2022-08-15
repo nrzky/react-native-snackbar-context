@@ -12,7 +12,7 @@ const MainPage: React.FC = () => {
           showMessage({
             message: 'Hello World!',
             duration: 5000,
-            actions: [{ title: 'CANCEL' }, { title: 'DONE' }],
+            actions: [{ title: 'DONE' }],
           })
         }
       >

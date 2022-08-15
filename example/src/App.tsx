@@ -5,7 +5,7 @@ import MainPage from './components/MainPage';
 
 export default function App() {
   return (
-    <SnackbarProvider duration={500}>
+    <SnackbarProvider duration={1500}>
       <MainPage />
     </SnackbarProvider>
   );
