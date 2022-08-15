@@ -1,5 +1,9 @@
 import * as React from 'react';
 
-const SnackbarContext = React.createContext(undefined);
+import type { SnackbarHandle } from '../types';
+
+const SnackbarContext = React.createContext(
+  (() => {}) as SnackbarHandle['showMessage']
+);
 
 export default SnackbarContext;

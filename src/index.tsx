@@ -1,3 +1,2 @@
-export const getMessage = () => {
-  return 'Hello World!';
-};
+export { SnackbarProvider } from './context';
+export { Snackbar } from './components';
