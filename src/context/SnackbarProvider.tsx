@@ -5,7 +5,10 @@ import SnackbarContext from './SnackbarContext';
 
 import type { SnackbarHandle, SnackbarProviderProps } from '../types';
 
-const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) => {
+const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
+  children,
+  duration,
+}) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
 
   const showMessage = React.useCallback(
@@ -18,7 +21,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) => {
   return (
     <SnackbarContext.Provider value={showMessage}>
       {children}
-      <Snackbar ref={snackbar} />
+      <Snackbar ref={snackbar} defaultDuration={duration} />
     </SnackbarContext.Provider>
   );
 };
