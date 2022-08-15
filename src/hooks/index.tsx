@@ -1,1 +1,1 @@
-export { default as useShowMessage } from './useShowMessage';
+export { default as useSnackbarContext } from './useSnackbarContext';

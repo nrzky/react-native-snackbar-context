@@ -16,6 +16,9 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
 
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
+    const [snackbarPosition, setSnackbarPosition] = React.useState<
+      'top' | 'bottom'
+    >('bottom');
     const [snackbarActions, setSnackbarActions] = React.useState<
       ActionButtonProps[] | undefined
     >();
@@ -24,7 +27,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       (duration?: number) => {
         Animated.timing(offset, {
           toValue: 0,
-          duration: 200,
+          duration: 150,
           delay: duration ?? defaultDuration,
           easing: Easing.ease,
           useNativeDriver: false,
@@ -42,7 +45,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         setVisible(true);
         Animated.timing(offset, {
           toValue: 1,
-          duration: 200,
+          duration: 150,
           easing: Easing.ease,
           useNativeDriver: false,
         }).start(({ finished }) => {
@@ -65,12 +68,15 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       ({
         message,
         duration,
+        position,
         actions,
       }: {
         message: string;
         duration?: number;
+        position?: 'top' | 'bottom';
         actions?: ActionButtonProps[];
       }) => {
+        setSnackbarPosition((currentPosition) => position ?? currentPosition);
         setSnackbarActions(actions);
         setMessageText(message);
         handleSnackbarTimer(duration);
@@ -78,8 +84,35 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       [handleSnackbarTimer]
     );
 
+    const handleHideMessage = React.useCallback(() => {
+      handleOutAnimation(0);
+    }, [handleOutAnimation]);
+
+    const snackbarStyle = React.useMemo(() => {
+      if (snackbarPosition === 'bottom') {
+        return {
+          bottom: offset.interpolate({
+            inputRange: [0, 1],
+            outputRange: [-50, 50],
+          }),
+        };
+      }
+
+      if (snackbarPosition === 'top') {
+        return {
+          top: offset.interpolate({
+            inputRange: [0, 1],
+            outputRange: [-50, 50],
+          }),
+        };
+      }
+
+      return {};
+    }, [offset, snackbarPosition]);
+
     React.useImperativeHandle(ref, () => ({
       showMessage: handleShowMessage,
+      hideMessage: handleHideMessage,
     }));
 
     if (!isVisible) {
@@ -87,17 +120,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }
 
     return (
-      <Animated.View
-        style={[
-          styles.container,
-          {
-            bottom: offset.interpolate({
-              inputRange: [0, 1],
-              outputRange: [-50, 50],
-            }),
-          },
-        ]}
-      >
+      <Animated.View style={[styles.container, snackbarStyle]}>
         <Text style={styles.messageText}>{messageText}</Text>
         {snackbarActions?.map((action, index) => (
           <ActionButton key={index.toString()} {...action} />

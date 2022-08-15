@@ -5,7 +5,7 @@ export default StyleSheet.create({
     position: 'absolute',
     left: 20,
     right: 20,
-    height: 50,
+    minHeight: 50,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,

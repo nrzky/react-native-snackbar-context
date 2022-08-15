@@ -3,11 +3,7 @@ import * as React from 'react';
 import { Snackbar } from '../components';
 import SnackbarContext from './SnackbarContext';
 
-import type {
-  ActionButtonProps,
-  SnackbarHandle,
-  SnackbarProviderProps,
-} from '../types';
+import type { SnackbarHandle, SnackbarProviderProps } from '../types';
 
 const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
@@ -15,19 +11,16 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
 }) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
 
-  const showMessage = React.useCallback(
-    (config: {
-      message: string;
-      duration?: number;
-      actions?: ActionButtonProps[];
-    }) => {
-      snackbar.current?.showMessage(config);
-    },
-    []
-  );
+  const showMessage = React.useCallback((config) => {
+    snackbar.current?.showMessage(config);
+  }, []);
+
+  const hideMessage = React.useCallback(() => {
+    snackbar.current?.hideMessage();
+  }, []);
 
   return (
-    <SnackbarContext.Provider value={showMessage}>
+    <SnackbarContext.Provider value={{ showMessage, hideMessage: hideMessage }}>
       {children}
       <Snackbar ref={snackbar} defaultDuration={duration} />
     </SnackbarContext.Provider>

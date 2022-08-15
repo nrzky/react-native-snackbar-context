@@ -9,7 +9,9 @@ export interface SnackbarHandle {
     message: string;
     duration?: number;
     actions?: ActionButtonProps[];
+    position?: 'top' | 'bottom';
   }) => void;
+  hideMessage: () => void;
 }
 
 export interface ActionButtonProps extends TouchableOpacityProps {

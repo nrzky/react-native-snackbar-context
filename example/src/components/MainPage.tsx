@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { useShowMessage } from 'react-native-snackbar-context';
+import { useSnackbarContext } from 'react-native-snackbar-context';
 
 const MainPage: React.FC = () => {
-  const showMessage = useShowMessage();
+  const { showMessage, hideMessage } = useSnackbarContext();
 
   return (
     <View style={styles.container}>
@@ -11,8 +11,9 @@ const MainPage: React.FC = () => {
         onPress={() =>
           showMessage({
             message: 'Hello World!',
-            duration: 5000,
-            actions: [{ title: 'DONE' }],
+            duration: 3000,
+            position: 'bottom',
+            actions: [{ title: 'DONE', onPress: hideMessage }],
           })
         }
       >
