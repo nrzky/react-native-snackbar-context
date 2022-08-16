@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Animated, Easing } from 'react-native';
+import { Text, Animated, Easing, View } from 'react-native';
 
 import ActionButton from '../ActionButton/ActionButton';
 import styles from './Snackbar.styled';
@@ -11,9 +11,20 @@ import type {
 } from '../../types';
 
 const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
-  ({ defaultDuration = 3000 }, ref) => {
+  (
+    {
+      defaultDuration = 3000,
+      style,
+      backgroundColor,
+      textProps,
+      textStyle,
+      textColor,
+      ...props
+    },
+    ref
+  ) => {
     const offset = React.useRef(new Animated.Value(0)).current;
-    const timerOffset = React.useRef(new Animated.Value(0.4)).current;
+    const timerOffset = React.useRef(new Animated.Value(1)).current;
 
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
@@ -31,6 +42,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         Animated.timing(timerOffset, {
           toValue: 0,
           duration: duration ?? defaultDuration,
+          easing: Easing.ease,
           useNativeDriver: false,
         }).start();
       },
@@ -136,11 +148,26 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }
 
     return (
-      <Animated.View style={[styles.container, snackbarStyle]}>
-        <Text style={styles.messageText}>{messageText}</Text>
-        {snackbarActions?.map((action, index) => (
-          <ActionButton key={index.toString()} {...action} />
-        ))}
+      <Animated.View
+        style={[
+          styles.container,
+          snackbarStyle,
+          { backgroundColor: backgroundColor },
+          style,
+        ]}
+        {...props}
+      >
+        <View style={styles.content}>
+          <Text
+            style={[styles.messageText, { color: textColor }, textStyle]}
+            {...textProps}
+          >
+            {messageText}
+          </Text>
+          {snackbarActions?.map((action, index) => (
+            <ActionButton key={index.toString()} {...action} />
+          ))}
+        </View>
         <Animated.View
           style={{
             ...styles.timerIndicatorView,

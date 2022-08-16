@@ -8,6 +8,7 @@ import type { SnackbarHandle, SnackbarProviderProps } from '../types';
 const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
   duration,
+  ...props
 }) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
 
@@ -22,7 +23,13 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   return (
     <SnackbarContext.Provider value={{ showMessage, hideMessage: hideMessage }}>
       {children}
-      <Snackbar ref={snackbar} defaultDuration={duration} />
+      <Snackbar
+        ref={snackbar}
+        defaultDuration={duration}
+        backgroundColor={'#6F1E51'}
+        textColor={'#FFFFFF'}
+        {...props}
+      />
     </SnackbarContext.Provider>
   );
 };

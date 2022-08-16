@@ -5,12 +5,15 @@ export default StyleSheet.create({
     position: 'absolute',
     left: 20,
     right: 20,
-    minHeight: 50,
+    paddingVertical: 15,
+
+    borderRadius: 7.5,
+  },
+  content: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
-    backgroundColor: 'rgb(40, 40, 40)',
-    borderRadius: 5,
   },
   messageText: {
     flex: 1,
@@ -21,7 +24,9 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    height: 5,
+    right: 0,
+    height: 3,
     backgroundColor: 'white',
+    borderRadius: 7.5,
   },
 });

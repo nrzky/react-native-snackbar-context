@@ -10,10 +10,15 @@ const MainPage: React.FC = () => {
       <TouchableOpacity
         onPress={() =>
           showMessage({
-            message: 'Hello World!',
-            duration: 3000,
-            position: 'bottom',
-            actions: [{ title: 'DONE', onPress: hideMessage }],
+            message: 'Hello React Native Snackbar',
+            duration: 5000,
+            actions: [
+              {
+                title: 'CLOSE',
+                onPress: hideMessage,
+                textColor: '#FFFFFF',
+              },
+            ],
           })
         }
       >

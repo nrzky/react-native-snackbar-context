@@ -1,6 +1,6 @@
-import type * as React from 'react';
+import type { SnackbarProps } from './Components';
 
-export interface SnackbarProviderProps {
-  children: React.ReactNode;
+export interface SnackbarProviderProps
+  extends Omit<SnackbarProps, 'defaultDuration'> {
   duration?: number;
 }

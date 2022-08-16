@@ -1,7 +1,16 @@
-import type { TouchableOpacityProps } from 'react-native';
+import type {
+  TextProps,
+  TextStyle,
+  TouchableOpacityProps,
+  ViewProps,
+} from 'react-native';
 
-export interface SnackbarProps {
+export interface SnackbarProps extends ViewProps {
   defaultDuration?: number;
+  backgroundColor?: string;
+  textColor?: string;
+  textProps?: TextProps;
+  textStyle?: TextStyle;
 }
 
 export interface SnackbarHandle {
@@ -16,4 +25,6 @@ export interface SnackbarHandle {
 
 export interface ActionButtonProps extends TouchableOpacityProps {
   title: string;
+  backgroundColor?: string;
+  textColor?: string;
 }
