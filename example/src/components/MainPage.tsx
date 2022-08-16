@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
       showMessage({
         type: type,
         position: 'bottom',
-        message: 'React Native Snackbar!',
+        message: 'React Native Snackbar Context',
         duration: 2000,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });
