@@ -19,6 +19,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       textProps,
       textStyle,
       textColor,
+      indicatorStyle,
+      onHide,
       ...props
     },
     ref
@@ -53,17 +55,18 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       (duration?: number) => {
         Animated.timing(offset, {
           toValue: 0,
-          duration: 150,
+          duration: 100,
           delay: duration ?? defaultDuration,
           easing: Easing.linear,
           useNativeDriver: false,
         }).start(({ finished }) => {
           if (finished) {
             setVisible(false);
+            onHide && onHide(duration ?? defaultDuration);
           }
         });
       },
-      [defaultDuration, offset]
+      [defaultDuration, offset, onHide]
     );
 
     const handleInAnimation = React.useCallback(
@@ -71,7 +74,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         setVisible(true);
         Animated.timing(offset, {
           toValue: 1,
-          duration: 150,
+          duration: 100,
           easing: Easing.linear,
           useNativeDriver: false,
         }).start(({ finished }) => {
@@ -169,13 +172,16 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           ))}
         </View>
         <Animated.View
-          style={{
-            ...styles.timerIndicatorView,
-            width: timerOffset.interpolate({
-              inputRange: [0, 1],
-              outputRange: ['0%', '100%'],
-            }),
-          }}
+          style={[
+            styles.timerIndicatorView,
+            {
+              width: timerOffset.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0%', '100%'],
+              }),
+            },
+            indicatorStyle,
+          ]}
         />
       </Animated.View>
     );

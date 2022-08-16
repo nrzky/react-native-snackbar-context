@@ -6,7 +6,6 @@ export default StyleSheet.create({
     left: 20,
     right: 20,
     paddingVertical: 15,
-
     borderRadius: 7.5,
   },
   content: {

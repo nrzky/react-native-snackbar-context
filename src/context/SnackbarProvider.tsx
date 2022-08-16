@@ -10,15 +10,28 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   duration,
   ...props
 }) => {
+  const [messages, setMessages] = React.useState<any[]>([]);
   const snackbar = React.useRef<SnackbarHandle>(null);
 
+  const removeMessage = React.useCallback(() => {
+    setMessages((currentMessages) => {
+      return currentMessages.filter((_message, index) => index !== 0);
+    });
+  }, []);
+
   const showMessage = React.useCallback((config) => {
-    snackbar.current?.showMessage(config);
+    setMessages((currentMessages) => [...currentMessages, config]);
   }, []);
 
   const hideMessage = React.useCallback(() => {
     snackbar.current?.hideMessage();
   }, []);
+
+  React.useEffect(() => {
+    if (messages.length) {
+      setTimeout(() => snackbar.current?.showMessage(messages[0]), 300);
+    }
+  }, [messages]);
 
   return (
     <SnackbarContext.Provider value={{ showMessage, hideMessage: hideMessage }}>
@@ -28,6 +41,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         defaultDuration={duration}
         backgroundColor={'#6F1E51'}
         textColor={'#FFFFFF'}
+        onHide={removeMessage}
         {...props}
       />
     </SnackbarContext.Provider>

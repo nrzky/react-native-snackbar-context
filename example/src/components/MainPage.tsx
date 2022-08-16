@@ -5,23 +5,41 @@ import { useSnackbarContext } from 'react-native-snackbar-context';
 const MainPage: React.FC = () => {
   const { showMessage, hideMessage } = useSnackbarContext();
 
+  const handleShowSnackbar = React.useCallback(() => {
+    showMessage({
+      message: 'React Native Snackbar!',
+      duration: 3000,
+      actions: [
+        {
+          title: 'CLOSE',
+          onPress: hideMessage,
+          textColor: '#FFFFFF',
+        },
+      ],
+    });
+
+    showMessage({
+      message: 'React Native Snackbar!\nMessage - 2',
+      duration: 3000,
+      actions: [
+        {
+          title: 'CLOSE',
+          onPress: hideMessage,
+          textColor: '#FFFFFF',
+        },
+      ],
+    });
+  }, [hideMessage, showMessage]);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      handleShowSnackbar();
+    }, 2000);
+  }, [handleShowSnackbar]);
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() =>
-          showMessage({
-            message: 'Hello React Native Snackbar',
-            duration: 5000,
-            actions: [
-              {
-                title: 'CLOSE',
-                onPress: hideMessage,
-                textColor: '#FFFFFF',
-              },
-            ],
-          })
-        }
-      >
+      <TouchableOpacity onPress={handleShowSnackbar}>
         <Text>Main Page!</Text>
       </TouchableOpacity>
     </View>

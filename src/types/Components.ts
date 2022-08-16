@@ -3,6 +3,7 @@ import type {
   TextStyle,
   TouchableOpacityProps,
   ViewProps,
+  ViewStyle,
 } from 'react-native';
 
 export interface SnackbarProps extends ViewProps {
@@ -11,6 +12,8 @@ export interface SnackbarProps extends ViewProps {
   textColor?: string;
   textProps?: TextProps;
   textStyle?: TextStyle;
+  indicatorStyle?: ViewStyle;
+  onHide?: (duration: number) => void;
 }
 
 export interface SnackbarHandle {
