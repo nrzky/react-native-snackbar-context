@@ -5,6 +5,7 @@ import type {
   ViewProps,
   ViewStyle,
 } from 'react-native';
+import type { MessageType } from './Helpers';
 
 export interface SnackbarProps extends ViewProps {
   defaultDuration?: number;
@@ -20,6 +21,7 @@ export interface SnackbarHandle {
   showMessage: (config: {
     message: string;
     duration?: number;
+    type?: MessageType;
     actions?: ActionButtonProps[];
     position?: 'top' | 'bottom';
   }) => void;
