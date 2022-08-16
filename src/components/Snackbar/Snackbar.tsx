@@ -168,7 +168,12 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
             {messageText}
           </Text>
           {snackbarActions?.map((action, index) => (
-            <ActionButton key={index.toString()} {...action} />
+            <ActionButton
+              key={index.toString()}
+              backgroundColor={backgroundColor}
+              textColor={textColor}
+              {...action}
+            />
           ))}
         </View>
         <Animated.View

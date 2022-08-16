@@ -17,10 +17,9 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   const [messages, setMessages] = React.useState<any[]>([]);
 
   const colors = React.useMemo(() => {
-    return new MessageType(
-      messages[0]?.type ?? 'default',
-      colorPalette ?? Colors
-    ).getColors();
+    const messageType = messages[0]?.type ?? 'default';
+    const messageColors = colorPalette ?? Colors;
+    return new MessageType(messageType, messageColors).getColors();
   }, [colorPalette, messages]);
 
   const removeMessage = React.useCallback(() => {

@@ -7,15 +7,10 @@ const MainPage: React.FC = () => {
 
   const handleShowSnackbar = React.useCallback(() => {
     showMessage({
+      type: 'error',
       message: 'React Native Snackbar!',
-      duration: 3000,
-      actions: [
-        {
-          title: 'CLOSE',
-          onPress: hideMessage,
-          textColor: '#FFFFFF',
-        },
-      ],
+      duration: 2000,
+      actions: [{ title: 'OK', onPress: hideMessage }],
     });
   }, [hideMessage, showMessage]);
 
