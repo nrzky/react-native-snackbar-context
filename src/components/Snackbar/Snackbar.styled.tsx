@@ -16,7 +16,8 @@ export default StyleSheet.create({
   },
   messageText: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 15,
+    fontWeight: '500',
     color: '#ffffff',
   },
   timerIndicatorView: {

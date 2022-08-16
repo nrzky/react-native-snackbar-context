@@ -11,7 +11,8 @@ export default StyleSheet.create({
     marginLeft: 5,
   },
   titleText: {
-    fontSize: 14,
+    fontSize: 15,
+    fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
   },
