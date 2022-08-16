@@ -5,7 +5,7 @@ import MainPage from './components/MainPage';
 
 export default function App() {
   return (
-    <SnackbarProvider duration={500} backgroundColor={'#000000'}>
+    <SnackbarProvider duration={500} backgroundColor={'#2f3640'}>
       <MainPage />
     </SnackbarProvider>
   );
