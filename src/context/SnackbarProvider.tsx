@@ -47,12 +47,12 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
     <SnackbarContext.Provider value={{ showMessage, hideMessage: hideMessage }}>
       {children}
       <Snackbar
+        {...props}
         ref={snackbar}
         defaultDuration={duration}
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
         onHide={removeMessage}
-        {...props}
       />
     </SnackbarContext.Provider>
   );
