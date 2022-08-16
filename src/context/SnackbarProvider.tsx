@@ -18,7 +18,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
 
   const colors = React.useMemo(() => {
     return new MessageType(
-      messages[0]?.type ?? 'info',
+      messages[0]?.type ?? 'default',
       colorPalette ?? Colors
     ).getColors();
   }, [colorPalette, messages]);

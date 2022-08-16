@@ -15,4 +15,8 @@ export default {
     backgroundColor: '#e74c3c',
     textColor: '#ecf0f1',
   },
+  default: {
+    backgroundColor: '#2f3640',
+    textColor: '#ecf0f1',
+  },
 };
