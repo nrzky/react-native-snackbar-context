@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, Animated, Easing, View } from 'react-native';
 
+import { Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
 import styles from './Snackbar.styled';
 
@@ -20,6 +21,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       textStyle,
       textColor,
       indicatorStyle,
+      spaces = Spaces,
       onHide,
       ...props
     },
@@ -124,7 +126,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         return {
           bottom: offset.interpolate({
             inputRange: [0, 1],
-            outputRange: [-50, 50],
+            outputRange: [-spaces.bottom, spaces.bottom],
           }),
         };
       }
@@ -133,13 +135,13 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         return {
           top: offset.interpolate({
             inputRange: [0, 1],
-            outputRange: [-50, 50],
+            outputRange: [-spaces.top, spaces.top],
           }),
         };
       }
 
       return {};
-    }, [offset, snackbarPosition]);
+    }, [offset, snackbarPosition, spaces?.bottom, spaces?.top]);
 
     React.useImperativeHandle(ref, () => ({
       showMessage: handleShowMessage,
@@ -155,7 +157,11 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         style={[
           styles.container,
           snackbarStyle,
-          { backgroundColor: backgroundColor },
+          {
+            left: spaces.left,
+            right: spaces.right,
+            backgroundColor: backgroundColor,
+          },
           style,
         ]}
         {...props}

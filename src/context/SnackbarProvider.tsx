@@ -11,6 +11,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
   duration,
   colorPalette,
+  spaces,
   ...props
 }) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
@@ -51,6 +52,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         defaultDuration={duration}
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
+        spaces={spaces}
         onHide={removeMessage}
       />
     </SnackbarContext.Provider>
