@@ -120,7 +120,17 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         position?: 'top' | 'bottom';
         actions?: ActionButtonProps[];
       }) => {
-        setSnackbarPosition((currentPosition) => position ?? currentPosition);
+        setSnackbarPosition((currentPosition) => {
+          if (typeof position === 'undefined') {
+            return 'bottom';
+          }
+
+          if (position) {
+            return position;
+          }
+
+          return currentPosition;
+        });
         setSnackbarActions(actions);
         setMessageText(message);
         handleSnackbarTimer(duration);
