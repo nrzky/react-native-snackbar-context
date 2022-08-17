@@ -16,13 +16,12 @@ const MainPage: React.FC = () => {
     (type: SnackbarTypes) => {
       showMessage({
         type: type,
-        position: 'bottom',
         message: 'React Native Snackbar Context',
         duration: 2000,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });
     },
-    [hideMessage, showMessage]
+    [showMessage, hideMessage]
   );
 
   return (
