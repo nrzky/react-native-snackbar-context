@@ -31,12 +31,30 @@ const App: React.FC = () => {
 export default App;
 ```
 
+### useSnackbarContext
 
-| Name         | Type   | Default        |
-|--------------|--------|----------------|
-| spaces       | object | SnackbarSpaces |
-| colorPalette | object | SnackbarColors |
-| duration     | number | 3000           |
+```tsx
+import { useSnackbarContext, SnackbarMessageTypes } from "react-native-snackbar-context";
+
+const Component: React.FC = () => {
+  const { showMessage, hideMessage } = useSnackbarContext();
+
+  const handleShowMessage = React.useCallback(() => {
+    showMessage({
+      type: SnackbarMessageTypes.SUCCESS,
+      message: 'React Native Snackbar Context',
+      duration: 2000,
+      actions: [{ title: 'OK', onPress: hideMessage }],
+    });
+  }, [showMessage, hideMessage])
+  
+  return (
+    <Button title={'Show Snackbar'} onPress={handleShowMessage} />
+  );
+}
+
+export default Component;
+```
 
 ## Contributing
 

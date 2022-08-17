@@ -4,4 +4,5 @@ export { useSnackbarContext } from './hooks';
 export {
   Colors as SnackbarColors,
   Spaces as SnackbarSpaces,
+  MessageTypes as SnackbarMessageTypes,
 } from './constants';

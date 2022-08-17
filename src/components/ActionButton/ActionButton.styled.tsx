@@ -12,7 +12,6 @@ export default StyleSheet.create({
   },
   titleText: {
     fontSize: 15,
-    fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
   },

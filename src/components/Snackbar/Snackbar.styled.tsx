@@ -16,6 +16,5 @@ export default StyleSheet.create({
   messageText: {
     flex: 1,
     fontSize: 15,
-    fontWeight: '500',
   },
 });
