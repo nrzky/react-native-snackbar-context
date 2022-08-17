@@ -5,9 +5,9 @@ import {
   useSnackbarContext,
 } from 'react-native-snackbar-context';
 
-type SnackbarTypes = 'default' | 'error' | 'success' | 'warning' | 'info';
+type SnackbarTypes = 'default' | 'success' | 'info' | 'warning' | 'error';
 
-const snackbarTypes = ['Default', 'Error', 'Success', 'Warning', 'Info'];
+const snackbarTypes = ['Default', 'Success', 'Info', 'Warning', 'Error'];
 
 const MainPage: React.FC = () => {
   const { showMessage, hideMessage } = useSnackbarContext();
