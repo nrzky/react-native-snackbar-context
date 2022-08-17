@@ -88,6 +88,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         Animated.timing(offset, {
           toValue: 1,
           duration: 100,
+          delay: 200,
           easing: Easing.linear,
           useNativeDriver: true,
         }).start(({ finished }) => {

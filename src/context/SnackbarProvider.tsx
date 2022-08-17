@@ -44,10 +44,8 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
 
   React.useEffect(() => {
     if (messages.length && isFinished) {
-      setTimeout(() => {
-        setFinished(false);
-        snackbar.current?.showMessage(messages[0]);
-      }, 300);
+      setFinished(false);
+      snackbar.current?.showMessage(messages[0]);
     }
   }, [isFinished, messages]);
 
