@@ -5,18 +5,38 @@ Snackbar component for React Native
 ## Installation
 
 ```sh
-npm install react-native-snackbar-context
+npm install react-native-snackbar-context --save
+```
+or
+
+```sh
+yarn add react-native-snackbar-context
 ```
 
 ## Usage
 
-```js
-import { multiply } from "react-native-snackbar-context";
+### Snackbar Provider
 
-// ...
+```tsx
+import { SnackbarProvider } from "react-native-snackbar-context";
 
-const result = await multiply(3, 7);
+const App: React.FC = () => {
+  return (
+    <SnackbarProvider>
+      /* Other Components */
+    </SnackbarProvider>
+  );
+}
+
+export default App;
 ```
+
+
+| Name         | Type   | Default        |
+|--------------|--------|----------------|
+| spaces       | object | SnackbarSpaces |
+| colorPalette | object | SnackbarColors |
+| duration     | number | 3000           |
 
 ## Contributing
 
