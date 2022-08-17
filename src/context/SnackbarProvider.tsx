@@ -15,12 +15,14 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   ...props
 }) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
+
   const [messages, setMessages] = React.useState<any[]>([]);
   const [isFinished, setFinished] = React.useState<boolean>(true);
 
   const colors = React.useMemo(() => {
     const messageType = messages[0]?.type ?? 'default';
     const messageColors = colorPalette ?? Colors;
+
     return new MessageType(messageType, messageColors).getColors();
   }, [colorPalette, messages]);
 
@@ -28,6 +30,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
     setMessages((currentMessages) => {
       return currentMessages.filter((_message, index) => index !== 0);
     });
+
     setFinished(true);
   }, []);
 
