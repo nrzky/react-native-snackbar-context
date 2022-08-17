@@ -5,6 +5,7 @@ export default StyleSheet.create({
     position: 'absolute',
     paddingVertical: 15,
     borderRadius: 7.5,
+    overflow: 'hidden',
   },
   content: {
     flex: 1,
