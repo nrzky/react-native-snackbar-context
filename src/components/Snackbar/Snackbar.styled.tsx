@@ -17,12 +17,4 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
   },
-  timerIndicatorView: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 3,
-    borderRadius: 7.5,
-  },
 });

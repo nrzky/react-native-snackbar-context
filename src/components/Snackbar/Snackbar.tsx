@@ -3,6 +3,7 @@ import { Text, Animated, Easing, View } from 'react-native';
 
 import { Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
+import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
 
 import type {
@@ -182,18 +183,10 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
             />
           ))}
         </View>
-        <Animated.View
-          style={[
-            styles.timerIndicatorView,
-            {
-              backgroundColor: textColor,
-              width: timerOffset.interpolate({
-                inputRange: [0, 1],
-                outputRange: ['0%', '100%'],
-              }),
-            },
-            indicatorStyle,
-          ]}
+        <TimerIndicator
+          style={indicatorStyle}
+          offset={timerOffset}
+          tintColor={textColor}
         />
       </Animated.View>
     );
