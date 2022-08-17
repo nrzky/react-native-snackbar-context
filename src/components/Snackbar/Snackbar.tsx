@@ -55,7 +55,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
 
         Animated.timing(timerOffset, {
           toValue: 0,
-          duration: duration ?? defaultDuration,
+          duration: (duration ?? defaultDuration) - 50,
+          delay: 50,
           easing: Easing.linear,
           useNativeDriver: true,
         }).start();
