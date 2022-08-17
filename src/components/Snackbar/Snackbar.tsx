@@ -186,6 +186,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           style={[
             styles.timerIndicatorView,
             {
+              backgroundColor: textColor,
               width: timerOffset.interpolate({
                 inputRange: [0, 1],
                 outputRange: ['0%', '100%'],

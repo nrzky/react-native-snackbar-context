@@ -16,7 +16,6 @@ export default StyleSheet.create({
     flex: 1,
     fontSize: 15,
     fontWeight: '500',
-    color: '#ffffff',
   },
   timerIndicatorView: {
     position: 'absolute',
@@ -24,7 +23,6 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
     height: 3,
-    backgroundColor: 'white',
     borderRadius: 7.5,
   },
 });
