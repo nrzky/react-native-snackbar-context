@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { Text, Animated, Easing, View } from 'react-native';
+import {
+  Text,
+  Animated,
+  Easing,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 
 import { Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
@@ -31,6 +37,9 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const offset = React.useRef(new Animated.Value(0)).current;
     const timerOffset = React.useRef(new Animated.Value(1)).current;
 
+    const { height } = useWindowDimensions();
+
+    const [containerHeight, setContainerHeight] = React.useState<number>(0);
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
     const [snackbarPosition, setSnackbarPosition] = React.useState<
@@ -61,7 +70,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           duration: 100,
           delay: duration ?? defaultDuration,
           easing: Easing.linear,
-          useNativeDriver: false,
+          useNativeDriver: true,
         }).start(({ finished }) => {
           if (finished) {
             setVisible(false);
@@ -79,7 +88,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           toValue: 1,
           duration: 100,
           easing: Easing.linear,
-          useNativeDriver: false,
+          useNativeDriver: true,
         }).start(({ finished }) => {
           handleTimerAnimation(duration);
 
@@ -125,24 +134,42 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const snackbarStyle = React.useMemo(() => {
       if (snackbarPosition === 'bottom') {
         return {
-          bottom: offset.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-spaces.bottom, spaces.bottom],
-          }),
+          transform: [
+            {
+              translateY: offset.interpolate({
+                inputRange: [0, 1],
+                outputRange: [
+                  height + spaces.bottom,
+                  height - spaces.bottom - containerHeight,
+                ],
+              }),
+            },
+          ],
         };
       }
 
       if (snackbarPosition === 'top') {
         return {
-          top: offset.interpolate({
-            inputRange: [0, 1],
-            outputRange: [-spaces.top, spaces.top],
-          }),
+          transform: [
+            {
+              translateY: offset.interpolate({
+                inputRange: [0, 1],
+                outputRange: [-spaces.top, spaces.top],
+              }),
+            },
+          ],
         };
       }
 
       return {};
-    }, [offset, snackbarPosition, spaces?.bottom, spaces?.top]);
+    }, [
+      containerHeight,
+      height,
+      offset,
+      snackbarPosition,
+      spaces.bottom,
+      spaces.top,
+    ]);
 
     React.useImperativeHandle(ref, () => ({
       showMessage: handleShowMessage,
@@ -165,6 +192,9 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           },
           style,
         ]}
+        onLayout={(event) =>
+          setContainerHeight(event.nativeEvent.layout.height)
+        }
         {...props}
       >
         <View style={styles.content}>

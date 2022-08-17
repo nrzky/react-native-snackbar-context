@@ -1,6 +1,6 @@
 export default {
-  top: 30,
-  bottom: 30,
-  left: 30,
-  right: 30,
+  top: 45,
+  bottom: 45,
+  left: 25,
+  right: 25,
 };
