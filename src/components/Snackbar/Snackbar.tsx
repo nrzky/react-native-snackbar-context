@@ -151,7 +151,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
               translateY: offset.interpolate({
                 inputRange: [0, 1],
                 outputRange: [
-                  height + spaces.bottom,
+                  height + 50,
                   height - spaces.bottom - containerHeight,
                 ],
               }),
@@ -166,7 +166,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
             {
               translateY: offset.interpolate({
                 inputRange: [0, 1],
-                outputRange: [-spaces.top, spaces.top],
+                outputRange: [-50, spaces.top],
               }),
             },
           ],

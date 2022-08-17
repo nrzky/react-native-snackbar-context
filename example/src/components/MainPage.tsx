@@ -28,7 +28,6 @@ const MainPage: React.FC = () => {
     <View style={styles.container}>
       {snackbarTypes.map((snackbarType) => {
         const type = snackbarType.toLowerCase();
-
         return (
           <TouchableOpacity
             key={snackbarType}
