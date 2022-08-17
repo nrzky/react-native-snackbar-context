@@ -31,6 +31,12 @@ const App: React.FC = () => {
 export default App;
 ```
 
+| Name         | Type   | Default        |
+|--------------|--------|----------------|
+| spaces       | object | SnackbarSpaces |
+| colorPalette | object | SnackbarColors |
+| duration     | number | 3000           |
+
 ### useSnackbarContext
 
 ```tsx
