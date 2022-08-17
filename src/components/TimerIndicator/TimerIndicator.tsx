@@ -16,10 +16,14 @@ const TimerIndicator: React.FC<TimerIndicatorProps> = ({
         styles.container,
         {
           backgroundColor: tintColor,
-          width: offset.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['0%', '100%'],
-          }),
+          transform: [
+            {
+              scaleX: offset.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, 1],
+              }),
+            },
+          ],
         },
         style,
       ]}

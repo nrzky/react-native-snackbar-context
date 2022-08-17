@@ -57,7 +57,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           toValue: 0,
           duration: duration ?? defaultDuration,
           easing: Easing.linear,
-          useNativeDriver: false,
+          useNativeDriver: true,
         }).start();
       },
       [defaultDuration, timerOffset]
