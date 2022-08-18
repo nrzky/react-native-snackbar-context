@@ -25,7 +25,7 @@ export interface SnackbarHandle {
     duration?: number;
     type?: MessageType;
     actions?: ActionButtonProps[];
-    position?: 'top' | 'bottom';
+    position?: SnackbarPositionType;
   }) => void;
   hideMessage: () => void;
 }
@@ -40,3 +40,5 @@ export interface TimerIndicatorProps extends ViewProps {
   offset: Animated.Value;
   tintColor?: string;
 }
+
+export type SnackbarPositionType = 'top' | 'bottom';
