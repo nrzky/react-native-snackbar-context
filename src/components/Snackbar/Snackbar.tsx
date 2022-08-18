@@ -11,6 +11,7 @@ import { Position, Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
+import { getSnackbarPosition } from './Snackbar.helpers';
 
 import type {
   ActionButtonProps,
@@ -18,7 +19,6 @@ import type {
   SnackbarPositionType,
   SnackbarProps,
 } from '../../types';
-import { getSnackbarPosition } from './Snackbar.helpers';
 
 const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
   (
