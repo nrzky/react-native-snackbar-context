@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
   SnackbarColors,
+  SnackbarDurations,
   useSnackbarContext,
 } from 'react-native-snackbar-context';
 
@@ -17,7 +18,7 @@ const MainPage: React.FC = () => {
       showMessage({
         type: type,
         message: 'React Native Snackbar Context',
-        duration: 2000,
+        duration: SnackbarDurations.BLINK,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });
     },

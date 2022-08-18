@@ -5,4 +5,5 @@ export {
   Colors as SnackbarColors,
   Spaces as SnackbarSpaces,
   MessageTypes as SnackbarMessageTypes,
+  Durations as SnackbarDurations,
 } from './constants';
