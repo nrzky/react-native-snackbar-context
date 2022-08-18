@@ -34,7 +34,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "snackbar",
+    "toast",
+    "message",
+    "context"
   ],
   "repository": "https://github.com/nrzky/react-native-snackbar-context",
   "author": "Onur Özkaya <info@nrzky.com> (https://github.com/nrzky)",
