@@ -40,3 +40,5 @@ export interface TimerIndicatorProps extends ViewProps {
   offset: Animated.Value;
   tintColor?: string;
 }
+
+export type SnackbarPositionType = 'top' | 'bottom';

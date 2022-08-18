@@ -1,6 +1,8 @@
-export default {
-  SUCCESS: 'success',
-  INFO: 'info',
-  WARNING: 'warning',
-  ERROR: 'error',
-};
+enum MessageTypes {
+  SUCCESS = 'success',
+  INFO = 'info',
+  WARNING = 'warning',
+  ERROR = 'error',
+}
+
+export default MessageTypes;

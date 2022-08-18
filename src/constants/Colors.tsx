@@ -1,4 +1,4 @@
-export default {
+const Colors = {
   success: {
     backgroundColor: '#27ae60',
     textColor: '#ecf0f1',
@@ -20,3 +20,5 @@ export default {
     textColor: '#ecf0f1',
   },
 };
+
+export default Colors;

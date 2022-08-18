@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import { Spaces } from '../../constants';
+import { Position, Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
@@ -15,8 +15,10 @@ import styles from './Snackbar.styled';
 import type {
   ActionButtonProps,
   SnackbarHandle,
+  SnackbarPositionType,
   SnackbarProps,
 } from '../../types';
+import { getSnackbarPosition } from './Snackbar.helpers';
 
 const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
   (
@@ -42,9 +44,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const [containerHeight, setContainerHeight] = React.useState<number>(0);
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
-    const [snackbarPosition, setSnackbarPosition] = React.useState<
-      'top' | 'bottom'
-    >('bottom');
+    const [snackbarPosition, setSnackbarPosition] =
+      React.useState<SnackbarPositionType>(Position.BOTTOM);
     const [snackbarActions, setSnackbarActions] = React.useState<
       ActionButtonProps[] | undefined
     >();
@@ -118,22 +119,17 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       }: {
         message: string;
         duration?: number;
-        position?: 'top' | 'bottom';
+        position?: SnackbarPositionType;
         actions?: ActionButtonProps[];
       }) => {
-        setSnackbarPosition((currentPosition) => {
-          if (typeof position === 'undefined') {
-            return 'bottom';
-          }
+        setSnackbarPosition((currentPosition) =>
+          getSnackbarPosition(currentPosition, position)
+        );
 
-          if (position) {
-            return position;
-          }
-
-          return currentPosition;
-        });
         setSnackbarActions(actions);
+
         setMessageText(message);
+
         handleSnackbarTimer(duration);
       },
       [handleSnackbarTimer]
@@ -144,7 +140,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }, [handleOutAnimation]);
 
     const snackbarStyle = React.useMemo(() => {
-      if (snackbarPosition === 'bottom') {
+      if (snackbarPosition === Position.BOTTOM) {
         return {
           transform: [
             {
@@ -160,7 +156,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         };
       }
 
-      if (snackbarPosition === 'top') {
+      if (snackbarPosition === Position.TOP) {
         return {
           transform: [
             {
