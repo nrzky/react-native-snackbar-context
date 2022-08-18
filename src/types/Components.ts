@@ -25,7 +25,7 @@ export interface SnackbarHandle {
     duration?: number;
     type?: MessageType;
     actions?: ActionButtonProps[];
-    position?: 'top' | 'bottom';
+    position?: SnackbarPositionType;
   }) => void;
   hideMessage: () => void;
 }
