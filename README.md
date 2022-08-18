@@ -15,7 +15,7 @@ yarn add react-native-snackbar-context
 
 ## Usage
 
-### Snackbar Provider
+### SnackbarProvider
 
 ```tsx
 import { SnackbarProvider } from "react-native-snackbar-context";
@@ -30,13 +30,13 @@ const App: React.FC = () => {
 
 export default App;
 ```
-#### Snackbar Provider Props
+#### SnackbarProvider Props
 
-| Name         | Type   | Default        |
-|--------------|--------|----------------|
-| spaces       | object | SnackbarSpaces |
-| colorPalette | object | SnackbarColors |
-| duration     | number | SnackbarDurations.REGULAR           |
+| Name         | Type   | Default                   |
+|--------------|--------|---------------------------|
+| spaces       | object | SnackbarSpaces            |
+| colorPalette | object | SnackbarColors            |
+| duration     | number | SnackbarDurations.REGULAR |
 
 ### useSnackbarContext
 
@@ -66,6 +66,14 @@ const Component: React.FC = () => {
 
 export default Component;
 ```
+#### showMessage
+
+| Name     | Type                                           | Default                   |
+|----------|------------------------------------------------|---------------------------|
+| message*  | string                                         | -                         |
+| type     | success \| info \| warning \| error \| default | default                   |
+| duration | number                                         | SnackbarDurations.REGULAR |
+| actions  | object[]                                       | -                         |
 
 ## Contributing
 
