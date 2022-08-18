@@ -30,6 +30,7 @@ const App: React.FC = () => {
 
 export default App;
 ```
+#### Snackbar Provider Props
 
 | Name         | Type   | Default        |
 |--------------|--------|----------------|
@@ -40,7 +41,11 @@ export default App;
 ### useSnackbarContext
 
 ```tsx
-import { useSnackbarContext, SnackbarMessageTypes, SnackbarDurations } from "react-native-snackbar-context";
+import {
+  useSnackbarContext,
+  SnackbarMessageTypes,
+  SnackbarDurations
+} from "react-native-snackbar-context";
 
 const Component: React.FC = () => {
   const { showMessage, hideMessage } = useSnackbarContext();
