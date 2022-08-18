@@ -35,12 +35,12 @@ export default App;
 |--------------|--------|----------------|
 | spaces       | object | SnackbarSpaces |
 | colorPalette | object | SnackbarColors |
-| duration     | number | 3000           |
+| duration     | number | SnackbarDurations.REGULAR           |
 
 ### useSnackbarContext
 
 ```tsx
-import { useSnackbarContext, SnackbarMessageTypes } from "react-native-snackbar-context";
+import { useSnackbarContext, SnackbarMessageTypes, SnackbarDurations } from "react-native-snackbar-context";
 
 const Component: React.FC = () => {
   const { showMessage, hideMessage } = useSnackbarContext();
@@ -49,7 +49,7 @@ const Component: React.FC = () => {
     showMessage({
       type: SnackbarMessageTypes.SUCCESS,
       message: 'React Native Snackbar Context',
-      duration: 2000,
+      duration: SnackbarDurations.FAST,
       actions: [{ title: 'OK', onPress: hideMessage }],
     });
   }, [showMessage, hideMessage])
