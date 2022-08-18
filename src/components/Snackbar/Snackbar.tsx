@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import { Position, Spaces } from '../../constants';
+import { Positions, Spaces } from '../../constants';
 import ActionButton from '../ActionButton/ActionButton';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
@@ -45,7 +45,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
     const [snackbarPosition, setSnackbarPosition] =
-      React.useState<SnackbarPositionType>(Position.BOTTOM);
+      React.useState<SnackbarPositionType>(Positions.BOTTOM);
     const [snackbarActions, setSnackbarActions] = React.useState<
       ActionButtonProps[] | undefined
     >();
@@ -140,7 +140,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }, [handleOutAnimation]);
 
     const snackbarStyle = React.useMemo(() => {
-      if (snackbarPosition === Position.BOTTOM) {
+      if (snackbarPosition === Positions.BOTTOM) {
         return {
           transform: [
             {
@@ -156,7 +156,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         };
       }
 
-      if (snackbarPosition === Position.TOP) {
+      if (snackbarPosition === Positions.TOP) {
         return {
           transform: [
             {

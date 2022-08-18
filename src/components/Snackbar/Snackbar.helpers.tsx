@@ -1,4 +1,4 @@
-import { Position } from '../../constants';
+import { Positions } from '../../constants';
 
 import type { SnackbarPositionType } from '../../types';
 
@@ -7,7 +7,7 @@ export const getSnackbarPosition = (
   position?: SnackbarPositionType
 ): SnackbarPositionType => {
   if (typeof position === 'undefined') {
-    return Position.BOTTOM;
+    return Positions.BOTTOM;
   }
 
   return position ?? currentPosition;
