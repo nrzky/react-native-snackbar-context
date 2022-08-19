@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { Positions, Spaces } from '../../constants';
-import ActionButton from '../ActionButton/ActionButton';
+import ActionsBar from '../ActionsBar/ActionsBar';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
 import { getSnackbarPosition } from './Snackbar.helpers';
@@ -139,6 +139,14 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       handleOutAnimation(0);
     }, [handleOutAnimation]);
 
+    const baseSnackbarStyle = React.useMemo(() => {
+      return {
+        left: spaces.left,
+        right: spaces.right,
+        backgroundColor: backgroundColor,
+      };
+    }, [backgroundColor, spaces.left, spaces.right]);
+
     const snackbarStyle = React.useMemo(() => {
       if (snackbarPosition === Positions.BOTTOM) {
         return {
@@ -190,19 +198,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
 
     return (
       <Animated.View
-        style={[
-          styles.container,
-          snackbarStyle,
-          {
-            left: spaces.left,
-            right: spaces.right,
-            backgroundColor: backgroundColor,
-          },
-          style,
-        ]}
-        onLayout={(event) =>
-          setContainerHeight(event.nativeEvent.layout.height)
-        }
+        style={[styles.container, baseSnackbarStyle, snackbarStyle, style]}
+        onLayout={(e) => setContainerHeight(e.nativeEvent.layout.height)}
         {...props}
       >
         <View style={styles.content}>
@@ -212,14 +209,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           >
             {messageText}
           </Text>
-          {snackbarActions?.map((action, index) => (
-            <ActionButton
-              key={index.toString()}
-              backgroundColor={backgroundColor}
-              textColor={textColor}
-              {...action}
-            />
-          ))}
+          <ActionsBar actions={snackbarActions} />
         </View>
         <TimerIndicator
           style={indicatorStyle}

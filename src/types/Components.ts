@@ -41,4 +41,8 @@ export interface TimerIndicatorProps extends ViewProps {
   tintColor?: string;
 }
 
+export interface ActionsBarProps {
+  actions?: ActionButtonProps[];
+}
+
 export type SnackbarPositionType = 'top' | 'bottom';
