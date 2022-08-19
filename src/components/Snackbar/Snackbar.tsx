@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import { Positions, Spaces } from '../../constants';
+import Animations from '../../animations';
 import ActionsBar from '../ActionsBar/ActionsBar';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
@@ -15,6 +16,7 @@ import { getSnackbarPosition } from './Snackbar.helpers';
 
 import type {
   ActionButtonProps,
+  AnimationType,
   SnackbarHandle,
   SnackbarPositionType,
   SnackbarProps,
@@ -39,8 +41,10 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const offset = React.useRef(new Animated.Value(0)).current;
     const timerOffset = React.useRef(new Animated.Value(1)).current;
 
-    const { height } = useWindowDimensions();
+    const windowDimensions = useWindowDimensions();
 
+    const [animationType, setAnimationType] =
+      React.useState<AnimationType>('slide');
     const [containerHeight, setContainerHeight] = React.useState<number>(0);
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
@@ -115,11 +119,13 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         message,
         duration,
         position,
+        animation = 'slide',
         actions,
       }: {
         message: string;
         duration?: number;
         position?: SnackbarPositionType;
+        animation?: AnimationType;
         actions?: ActionButtonProps[];
       }) => {
         setSnackbarPosition((currentPosition) =>
@@ -129,6 +135,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         setSnackbarActions(actions);
 
         setMessageText(message);
+
+        setAnimationType(animation);
 
         handleSnackbarTimer(duration);
       },
@@ -148,43 +156,26 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }, [backgroundColor, spaces.left, spaces.right]);
 
     const snackbarStyle = React.useMemo(() => {
-      if (snackbarPosition === Positions.BOTTOM) {
-        return {
-          transform: [
-            {
-              translateY: offset.interpolate({
-                inputRange: [0, 1],
-                outputRange: [
-                  height + 50,
-                  height - (spaces.bottom + containerHeight),
-                ],
-              }),
-            },
-          ],
-        };
-      }
+      const animationParams = {
+        containerHeight,
+        windowDimensions: windowDimensions,
+        offset: offset,
+        position: snackbarPosition,
+        spaces: spaces,
+      };
 
-      if (snackbarPosition === Positions.TOP) {
-        return {
-          transform: [
-            {
-              translateY: offset.interpolate({
-                inputRange: [0, 1],
-                outputRange: [-(containerHeight + 50), spaces.top],
-              }),
-            },
-          ],
-        };
+      if (animationType === 'slide') {
+        return Animations.slide(animationParams);
       }
 
       return {};
     }, [
+      animationType,
       containerHeight,
-      height,
       offset,
       snackbarPosition,
-      spaces.bottom,
-      spaces.top,
+      spaces,
+      windowDimensions,
     ]);
 
     React.useImperativeHandle(ref, () => ({
@@ -209,7 +200,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           >
             {messageText}
           </Text>
-          <ActionsBar actions={snackbarActions} />
+          <ActionsBar actions={snackbarActions} textColor={textColor} />
         </View>
         <TimerIndicator
           style={indicatorStyle}

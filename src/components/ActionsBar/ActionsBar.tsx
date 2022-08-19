@@ -6,7 +6,7 @@ import styles from './ActionsBar.styled';
 
 import type { ActionsBarProps } from '../../types';
 
-const ActionsBar: React.FC<ActionsBarProps> = ({ actions }) => {
+const ActionsBar: React.FC<ActionsBarProps> = ({ actions, textColor }) => {
   if (!actions) {
     return null;
   }
@@ -14,7 +14,11 @@ const ActionsBar: React.FC<ActionsBarProps> = ({ actions }) => {
   return (
     <View style={styles.container}>
       {actions.map((action, index) => (
-        <ActionButton key={index.toString()} {...action} />
+        <ActionButton
+          key={index.toString()}
+          textColor={textColor}
+          {...action}
+        />
       ))}
     </View>
   );
