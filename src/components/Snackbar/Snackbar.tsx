@@ -172,6 +172,10 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         return Animations.fade(animationParams);
       }
 
+      if (animationType === 'zoom') {
+        return Animations.zoom(animationParams);
+      }
+
       return {};
     }, [
       animationType,
