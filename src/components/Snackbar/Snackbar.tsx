@@ -168,6 +168,10 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         return Animations.slide(animationParams);
       }
 
+      if (animationType === 'fade') {
+        return Animations.fade(animationParams);
+      }
+
       return {};
     }, [
       animationType,

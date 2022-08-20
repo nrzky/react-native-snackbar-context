@@ -6,6 +6,7 @@ import type {
   ViewStyle,
   Animated,
 } from 'react-native';
+import type { AnimationType } from './Animations';
 import type { MessageType } from './Helpers';
 
 export interface SnackbarProps extends ViewProps {
@@ -26,6 +27,7 @@ export interface SnackbarHandle {
     type?: MessageType;
     actions?: ActionButtonProps[];
     position?: SnackbarPositionType;
+    animation?: AnimationType;
   }) => void;
   hideMessage: () => void;
 }

@@ -18,6 +18,8 @@ const MainPage: React.FC = () => {
       showMessage({
         type: type,
         message: 'React Native Snackbar Context',
+        position: 'bottom',
+        animation: 'slide',
         duration: SnackbarDurations.BLINK,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });
