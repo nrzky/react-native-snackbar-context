@@ -164,16 +164,24 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         spaces: spaces,
       };
 
-      if (animationType === 'slide') {
-        return Animations.slide(animationParams);
-      }
-
       if (animationType === 'fade') {
         return Animations.fade(animationParams);
       }
 
       if (animationType === 'zoom') {
         return Animations.zoom(animationParams);
+      }
+
+      if (animationType === 'slide') {
+        return Animations.slide(animationParams);
+      }
+
+      if (animationType === 'slide-left') {
+        return Animations.slideLeft(animationParams);
+      }
+
+      if (animationType === 'slide-right') {
+        return Animations.slideRight(animationParams);
       }
 
       return {};

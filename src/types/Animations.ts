@@ -1,7 +1,12 @@
 import type { Animated } from 'react-native';
 import type { SnackbarPositionType } from './Components';
 
-export type AnimationType = 'slide' | 'fade' | 'zoom';
+export type AnimationType =
+  | 'fade'
+  | 'zoom'
+  | 'slide'
+  | 'slide-left'
+  | 'slide-right';
 
 export interface AnimationParams {
   offset: Animated.Value;

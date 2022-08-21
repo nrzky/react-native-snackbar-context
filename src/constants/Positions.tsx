@@ -1,6 +1,6 @@
-enum Position {
+enum Positions {
   TOP = 'top',
   BOTTOM = 'bottom',
 }
 
-export default Position;
+export default Positions;
