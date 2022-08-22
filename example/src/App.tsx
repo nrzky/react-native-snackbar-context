@@ -5,7 +5,7 @@ import MainPage from './components/MainPage';
 
 export default function App() {
   return (
-    <SnackbarProvider>
+    <SnackbarProvider animation="zoom">
       <MainPage />
     </SnackbarProvider>
   );

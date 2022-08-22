@@ -25,6 +25,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
   (
     {
       defaultDuration = 3000,
+      defaultAnimation = 'slide',
       style,
       backgroundColor,
       textProps,
@@ -118,7 +119,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         message,
         duration,
         position,
-        animation = 'slide',
+        animation = defaultAnimation,
         actions,
       }: {
         message: string;
@@ -139,7 +140,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
 
         handleSnackbarTimer(duration);
       },
-      [handleSnackbarTimer]
+      [defaultAnimation, handleSnackbarTimer]
     );
 
     const handleHideMessage = React.useCallback(() => {

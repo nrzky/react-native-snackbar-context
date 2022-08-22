@@ -10,6 +10,7 @@ import type { SnackbarHandle, SnackbarProviderProps } from '../types';
 const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
   duration,
+  animation,
   colorPalette,
   spaces,
   ...props
@@ -56,6 +57,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         {...props}
         ref={snackbar}
         defaultDuration={duration}
+        defaultAnimation={animation}
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
         spaces={spaces}

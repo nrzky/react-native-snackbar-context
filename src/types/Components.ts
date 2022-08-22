@@ -11,6 +11,7 @@ import type { MessageType } from './Helpers';
 
 export interface SnackbarProps extends ViewProps {
   defaultDuration?: number;
+  defaultAnimation?: AnimationType;
   backgroundColor?: string;
   textColor?: string;
   textProps?: TextProps;
