@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
+  SnackbarAnimations,
   SnackbarColors,
   SnackbarDurations,
+  SnackbarPositions,
   useSnackbarContext,
 } from 'react-native-snackbar-context';
 
@@ -18,7 +20,8 @@ const MainPage: React.FC = () => {
       showMessage({
         type: type,
         message: 'React Native Snackbar Context',
-        position: 'bottom',
+        position: SnackbarPositions.BOTTOM,
+        animation: SnackbarAnimations.ZOOM,
         duration: SnackbarDurations.BLINK,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });
