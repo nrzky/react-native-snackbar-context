@@ -6,7 +6,8 @@ export type AnimationType =
   | 'zoom'
   | 'slide'
   | 'slide-left'
-  | 'slide-right';
+  | 'slide-right'
+  | 'flicker';
 
 export interface AnimationParams {
   offset: Animated.Value;
