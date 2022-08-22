@@ -6,8 +6,10 @@ import type {
   ViewStyle,
   Animated,
 } from 'react-native';
-import type { AnimationType } from './Animations';
+import type { AnimationParams, AnimationType } from './Animations';
 import type { MessageType } from './Helpers';
+
+export type CustomAnimation = (params: AnimationParams) => ViewStyle | object;
 
 export interface SnackbarProps extends ViewProps {
   defaultDuration?: number;
@@ -18,6 +20,7 @@ export interface SnackbarProps extends ViewProps {
   textStyle?: TextStyle;
   indicatorStyle?: ViewStyle;
   spaces?: SnackbarSpacesType;
+  customAnimation?: CustomAnimation;
   onHide?: (duration: number) => void;
 }
 

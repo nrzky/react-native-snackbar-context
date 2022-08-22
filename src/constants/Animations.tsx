@@ -6,6 +6,7 @@ enum Animations {
   SLIDE_LEFT = 'slide-left',
   SLIDE_RIGHT = 'slide-right',
   FLICKER = 'flicker',
+  CUSTOM = 'custom',
 }
 
 export default Animations;

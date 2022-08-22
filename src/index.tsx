@@ -9,3 +9,5 @@ export {
   Positions as SnackbarPositions,
   Animations as SnackbarAnimations,
 } from './constants';
+
+export * from './types';

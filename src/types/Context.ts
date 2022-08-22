@@ -1,5 +1,5 @@
 import type { AnimationType } from './Animations';
-import type { SnackbarSpacesType } from './Components';
+import type { CustomAnimation, SnackbarSpacesType } from './Components';
 import type { ColorPalette } from './Helpers';
 
 export interface SnackbarProviderProps {
@@ -7,4 +7,5 @@ export interface SnackbarProviderProps {
   animation?: AnimationType;
   spaces?: SnackbarSpacesType;
   colorPalette?: ColorPalette;
+  customAnimation?: CustomAnimation;
 }
