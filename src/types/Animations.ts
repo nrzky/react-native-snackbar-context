@@ -2,6 +2,7 @@ import type { Animated } from 'react-native';
 import type { SnackbarPositionType } from './Components';
 
 export type AnimationType =
+  | 'bounce'
   | 'fade'
   | 'zoom'
   | 'slide'

@@ -23,6 +23,8 @@ export const getAnimationStyle = (
   params: AnimationParams
 ) => {
   switch (type) {
+    case 'bounce':
+      return Animations.bounce(params);
     case 'fade':
       return Animations.fade(params);
     case 'zoom':

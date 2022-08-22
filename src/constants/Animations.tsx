@@ -1,4 +1,5 @@
 enum Animations {
+  BOUNCE = 'bounce',
   FADE = 'fade',
   ZOOM = 'zoom',
   SLIDE = 'slide',
