@@ -37,6 +37,8 @@ export const getAnimationStyle = (
       return Animations.slideRight(params);
     case 'flicker':
       return Animations.flicker(params);
+    case 'custom':
+      return Animations.slide(params);
     default:
       return {};
   }

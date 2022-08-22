@@ -13,6 +13,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   animation,
   colorPalette,
   spaces,
+  customAnimation,
   ...props
 }) => {
   const snackbar = React.useRef<SnackbarHandle>(null);
@@ -61,6 +62,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
         spaces={spaces}
+        customAnimation={customAnimation}
         onHide={removeMessage}
       />
     </SnackbarContext.Provider>

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
-  SnackbarAnimations,
   SnackbarMessageTypes,
   SnackbarColors,
   SnackbarDurations,
   SnackbarPositions,
   useSnackbarContext,
+  SnackbarAnimations,
 } from 'react-native-snackbar-context';
 
 type SnackbarTypes = 'default' | 'success' | 'info' | 'warning' | 'error';
@@ -22,7 +22,7 @@ const MainPage: React.FC = () => {
         type: type,
         message: 'React Native Snackbar Context',
         position: SnackbarPositions.BOTTOM,
-        animation: SnackbarAnimations.BOUNCE,
+        animation: SnackbarAnimations.CUSTOM,
         duration: SnackbarDurations.BLINK,
         actions: [{ title: 'OK', onPress: hideMessage }],
       });

@@ -8,7 +8,8 @@ export type AnimationType =
   | 'slide'
   | 'slide-left'
   | 'slide-right'
-  | 'flicker';
+  | 'flicker'
+  | 'custom';
 
 export interface AnimationParams {
   offset: Animated.Value;

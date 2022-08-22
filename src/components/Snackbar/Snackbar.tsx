@@ -33,6 +33,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       textColor,
       indicatorStyle,
       spaces = Spaces,
+      customAnimation,
       onHide,
       ...props
     },
@@ -166,8 +167,12 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     }, [containerHeight, offset, snackbarPosition, spaces, windowDimensions]);
 
     const snackbarStyle = React.useMemo(() => {
+      if (animationType === Animations.CUSTOM && customAnimation) {
+        return customAnimation(animationParams);
+      }
+
       return getAnimationStyle(animationType, animationParams);
-    }, [animationParams, animationType]);
+    }, [animationParams, animationType, customAnimation]);
 
     React.useImperativeHandle(ref, () => ({
       showMessage: handleShowMessage,
