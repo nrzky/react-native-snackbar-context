@@ -155,24 +155,19 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       };
     }, [backgroundColor, spaces.left, spaces.right]);
 
-    const snackbarStyle = React.useMemo(() => {
-      const animationParams = {
+    const animationParams = React.useMemo(() => {
+      return {
         containerHeight,
         windowDimensions: windowDimensions,
         offset: offset,
         position: snackbarPosition,
         spaces: spaces,
       };
+    }, [containerHeight, offset, snackbarPosition, spaces, windowDimensions]);
 
+    const snackbarStyle = React.useMemo(() => {
       return getAnimationStyle(animationType, animationParams);
-    }, [
-      animationType,
-      containerHeight,
-      offset,
-      snackbarPosition,
-      spaces,
-      windowDimensions,
-    ]);
+    }, [animationParams, animationType]);
 
     React.useImperativeHandle(ref, () => ({
       showMessage: handleShowMessage,
