@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import {
   SnackbarAnimations,
+  SnackbarMessageTypes,
   SnackbarColors,
   SnackbarDurations,
   SnackbarPositions,
@@ -10,7 +11,7 @@ import {
 
 type SnackbarTypes = 'default' | 'success' | 'info' | 'warning' | 'error';
 
-const snackbarTypes = ['Default', 'Success', 'Info', 'Warning', 'Error'];
+const snackbarTypes = Object.keys(SnackbarMessageTypes);
 
 const MainPage: React.FC = () => {
   const { showMessage, hideMessage } = useSnackbarContext();
@@ -48,7 +49,7 @@ const MainPage: React.FC = () => {
                 { color: SnackbarColors[type].textColor },
               ]}
             >
-              {snackbarType} Snackbar
+              {snackbarType.toLowerCase()}
             </Text>
           </TouchableOpacity>
         );

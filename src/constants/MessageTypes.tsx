@@ -1,4 +1,5 @@
 enum MessageTypes {
+  DEFAULT = 'default',
   SUCCESS = 'success',
   INFO = 'info',
   WARNING = 'warning',

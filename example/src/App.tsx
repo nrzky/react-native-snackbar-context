@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { SnackbarProvider } from 'react-native-snackbar-context';
+import {
+  SnackbarAnimations,
+  SnackbarProvider,
+} from 'react-native-snackbar-context';
 
 import MainPage from './components/MainPage';
 
-export default function App() {
+const App = () => {
   return (
-    <SnackbarProvider animation="zoom">
+    <SnackbarProvider animation={SnackbarAnimations.FLICKER}>
       <MainPage />
     </SnackbarProvider>
   );
-}
+};
+
+export default App;
