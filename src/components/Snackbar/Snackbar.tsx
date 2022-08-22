@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import { Positions, Spaces } from '../../constants';
+import { Animations, Durations, Positions, Spaces } from '../../constants';
 import ActionsBar from '../ActionsBar/ActionsBar';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
@@ -24,8 +24,8 @@ import type {
 const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
   (
     {
-      defaultDuration = 3000,
-      defaultAnimation = 'slide',
+      defaultDuration = Durations.REGULAR,
+      defaultAnimation = Animations.SLIDE,
       style,
       backgroundColor,
       textProps,
@@ -44,7 +44,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const windowDimensions = useWindowDimensions();
 
     const [animationType, setAnimationType] =
-      React.useState<AnimationType>('slide');
+      React.useState<AnimationType>(defaultAnimation);
     const [containerHeight, setContainerHeight] = React.useState<number>(0);
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');

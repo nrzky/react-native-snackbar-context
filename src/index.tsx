@@ -7,4 +7,5 @@ export {
   MessageTypes as SnackbarMessageTypes,
   Durations as SnackbarDurations,
   Positions as SnackbarPositions,
+  Animations as SnackbarAnimations,
 } from './constants';
