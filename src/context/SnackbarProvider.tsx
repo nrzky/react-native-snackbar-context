@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Snackbar } from '../components';
 import { MessageType } from '../helpers';
-import { Colors } from '../constants';
+import { Colors, MessageTypes } from '../constants';
 import SnackbarContext from './SnackbarContext';
 
 import type { SnackbarHandle, SnackbarProviderProps } from '../types';
@@ -22,7 +22,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   const [isFinished, setFinished] = React.useState<boolean>(true);
 
   const colors = React.useMemo(() => {
-    const messageType = messages[0]?.type ?? 'default';
+    const messageType = messages[0]?.type ?? MessageTypes.DEFAULT;
     const messageColors = colorPalette ?? Colors;
 
     return new MessageType(messageType, messageColors).getColors();
