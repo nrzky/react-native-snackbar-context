@@ -23,6 +23,8 @@ export const getAnimationStyle = (
   params: AnimationParams
 ) => {
   switch (type) {
+    case 'bounce':
+      return Animations.bounce(params);
     case 'fade':
       return Animations.fade(params);
     case 'zoom':
@@ -33,6 +35,8 @@ export const getAnimationStyle = (
       return Animations.slideLeft(params);
     case 'slide-right':
       return Animations.slideRight(params);
+    case 'flicker':
+      return Animations.flicker(params);
     default:
       return {};
   }
