@@ -1,8 +1,13 @@
 import { Positions } from '../constants';
 
+import type { ViewProps } from 'react-native';
 import type { AnimationParams } from '../types';
 
-const flicker = ({ offset, position, spaces }: AnimationParams) => {
+const flicker = ({
+  offset,
+  position,
+  spaces,
+}: AnimationParams): ViewProps | object => {
   if (position === Positions.BOTTOM) {
     return {
       bottom: spaces.bottom,

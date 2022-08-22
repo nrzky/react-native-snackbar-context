@@ -1,7 +1,13 @@
 import { Positions } from '../constants';
+
+import type { ViewProps } from 'react-native';
 import type { AnimationParams } from '../types';
 
-const fade = ({ offset, position, spaces }: AnimationParams) => {
+const fade = ({
+  offset,
+  position,
+  spaces,
+}: AnimationParams): ViewProps | object => {
   if (position === Positions.BOTTOM) {
     return {
       opacity: offset,

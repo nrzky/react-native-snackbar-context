@@ -1,5 +1,6 @@
 import { Positions } from '../constants';
 
+import type { ViewProps } from 'react-native';
 import type { AnimationParams } from '../types';
 
 const slide = ({
@@ -8,7 +9,7 @@ const slide = ({
   containerHeight,
   position,
   spaces,
-}: AnimationParams) => {
+}: AnimationParams): ViewProps | object => {
   const { height } = windowDimensions;
 
   if (position === Positions.BOTTOM) {
