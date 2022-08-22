@@ -17,7 +17,7 @@ export interface SnackbarProps extends ViewProps {
   textProps?: TextProps;
   textStyle?: TextStyle;
   indicatorStyle?: ViewStyle;
-  spaces?: { top: number; bottom: number; right: number; left: number };
+  spaces?: SnackbarSpacesType;
   onHide?: (duration: number) => void;
 }
 
@@ -50,3 +50,10 @@ export interface ActionsBarProps {
 }
 
 export type SnackbarPositionType = 'top' | 'bottom';
+
+export type SnackbarSpacesType = {
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
