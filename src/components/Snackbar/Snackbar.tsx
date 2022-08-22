@@ -8,11 +8,10 @@ import {
 } from 'react-native';
 
 import { Positions, Spaces } from '../../constants';
-import Animations from '../../animations';
 import ActionsBar from '../ActionsBar/ActionsBar';
 import TimerIndicator from '../TimerIndicator/TimerIndicator';
 import styles from './Snackbar.styled';
-import { getSnackbarPosition } from './Snackbar.helpers';
+import { getSnackbarPosition, getAnimationStyle } from './Snackbar.helpers';
 
 import type {
   ActionButtonProps,
@@ -164,27 +163,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         spaces: spaces,
       };
 
-      if (animationType === 'fade') {
-        return Animations.fade(animationParams);
-      }
-
-      if (animationType === 'zoom') {
-        return Animations.zoom(animationParams);
-      }
-
-      if (animationType === 'slide') {
-        return Animations.slide(animationParams);
-      }
-
-      if (animationType === 'slide-left') {
-        return Animations.slideLeft(animationParams);
-      }
-
-      if (animationType === 'slide-right') {
-        return Animations.slideRight(animationParams);
-      }
-
-      return {};
+      return getAnimationStyle(animationType, animationParams);
     }, [
       animationType,
       containerHeight,
