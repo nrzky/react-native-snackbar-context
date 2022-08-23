@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  AnimationParams,
+  CustomAnimation,
   SnackbarAnimations,
   SnackbarPositions,
   SnackbarProvider,
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <SnackbarProvider
       animation={SnackbarAnimations.CUSTOM}
-      customAnimation={CustomAnimation}
+      customAnimation={ScaleXAnimation}
     >
       <MainPage />
     </SnackbarProvider>
@@ -21,7 +21,7 @@ const App = () => {
 
 export default App;
 
-const CustomAnimation = (params: AnimationParams) => {
+const ScaleXAnimation: CustomAnimation = (params) => {
   if (params.position === SnackbarPositions.TOP) {
     return {
       top: params.spaces.top,
