@@ -134,11 +134,8 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         );
 
         setSnackbarActions(actions);
-
         setMessageText(message);
-
         setAnimationType(animation);
-
         handleSnackbarTimer(duration);
       },
       [defaultAnimation, handleSnackbarTimer]
