@@ -24,15 +24,17 @@ export interface SnackbarProps extends ViewProps {
   onHide?: (duration: number) => void;
 }
 
+export type ShowMessageFunction = (config: {
+  message: string;
+  duration?: number;
+  type?: MessageType;
+  actions?: ActionButtonProps[];
+  position?: SnackbarPositionType;
+  animation?: AnimationType;
+}) => void;
+
 export interface SnackbarHandle {
-  showMessage: (config: {
-    message: string;
-    duration?: number;
-    type?: MessageType;
-    actions?: ActionButtonProps[];
-    position?: SnackbarPositionType;
-    animation?: AnimationType;
-  }) => void;
+  showMessage: ShowMessageFunction;
   hideMessage: () => void;
 }
 

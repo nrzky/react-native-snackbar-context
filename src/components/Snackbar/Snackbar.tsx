@@ -16,6 +16,7 @@ import { getSnackbarPosition, getAnimationStyle } from './Snackbar.helpers';
 import type {
   ActionButtonProps,
   AnimationType,
+  ShowMessageFunction,
   SnackbarHandle,
   SnackbarPositionType,
   SnackbarProps,
@@ -91,6 +92,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const handleInAnimation = React.useCallback(
       (duration?: number) => {
         setVisible(true);
+
         Animated.timing(offset, {
           toValue: 1,
           duration: 100,
@@ -115,23 +117,17 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       [handleInAnimation]
     );
 
-    const handleShowMessage = React.useCallback(
+    const handleShowMessage: ShowMessageFunction = React.useCallback(
       ({
         message,
         duration,
         position,
         animation = defaultAnimation,
         actions,
-      }: {
-        message: string;
-        duration?: number;
-        position?: SnackbarPositionType;
-        animation?: AnimationType;
-        actions?: ActionButtonProps[];
       }) => {
-        setSnackbarPosition((currentPosition) =>
-          getSnackbarPosition(currentPosition, position)
-        );
+        setSnackbarPosition((currentPosition) => {
+          return getSnackbarPosition(currentPosition, position);
+        });
 
         setSnackbarActions(actions);
         setMessageText(message);
