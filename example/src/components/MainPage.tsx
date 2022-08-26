@@ -4,7 +4,6 @@ import {
   SnackbarMessageTypes,
   SnackbarColors,
   SnackbarDurations,
-  SnackbarPositions,
   useSnackbarContext,
   SnackbarAnimations,
 } from 'react-native-snackbar-context';
@@ -21,7 +20,6 @@ const MainPage: React.FC = () => {
       showMessage({
         type: type,
         message: 'React Native Snackbar Context',
-        position: SnackbarPositions.BOTTOM,
         animation: SnackbarAnimations.CUSTOM,
         duration: SnackbarDurations.BLINK,
         actions: [{ title: 'OK', onPress: hideMessage }],
