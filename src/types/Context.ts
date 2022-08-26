@@ -1,16 +1,15 @@
-import type { AnimationType } from './Animations';
-import type {
-  CustomAnimation,
-  SnackbarPositionType,
-  SnackbarSpacesType,
-} from './Components';
+import type { SnackbarProps } from './Components';
 import type { ColorPalette } from './Helpers';
 
 export interface SnackbarProviderProps {
-  duration?: number;
-  animation?: AnimationType;
-  position?: SnackbarPositionType;
-  spaces?: SnackbarSpacesType;
   colorPalette?: ColorPalette;
-  customAnimation?: CustomAnimation;
+  duration?: SnackbarProps['defaultDuration'];
+  animation?: SnackbarProps['defaultAnimation'];
+  position?: SnackbarProps['defaultPosition'];
+  spaces?: SnackbarProps['spaces'];
+  customAnimation?: SnackbarProps['customAnimation'];
+  style?: SnackbarProps['style'];
+  textProps?: SnackbarProps['textProps'];
+  textStyle?: SnackbarProps['textStyle'];
+  indicatorStyle?: SnackbarProps['indicatorStyle'];
 }
