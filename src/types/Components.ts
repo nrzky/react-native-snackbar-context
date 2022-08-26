@@ -14,6 +14,7 @@ export type CustomAnimation = (params: AnimationParams) => ViewStyle | object;
 export interface SnackbarProps extends ViewProps {
   defaultDuration?: number;
   defaultAnimation?: AnimationType;
+  defaultPosition?: SnackbarPositionType;
   backgroundColor?: string;
   textColor?: string;
   textProps?: TextProps;

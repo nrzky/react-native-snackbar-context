@@ -27,6 +27,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     {
       defaultDuration = Durations.REGULAR,
       defaultAnimation = Animations.SLIDE,
+      defaultPosition = Positions.BOTTOM,
       style,
       backgroundColor,
       textProps,
@@ -51,7 +52,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
     const [isVisible, setVisible] = React.useState<boolean>(false);
     const [messageText, setMessageText] = React.useState<string>('');
     const [snackbarPosition, setSnackbarPosition] =
-      React.useState<SnackbarPositionType>(Positions.BOTTOM);
+      React.useState<SnackbarPositionType>(defaultPosition);
     const [snackbarActions, setSnackbarActions] = React.useState<
       ActionButtonProps[] | undefined
     >();
@@ -121,7 +122,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       ({
         message,
         duration,
-        position,
+        position = defaultPosition,
         animation = defaultAnimation,
         actions,
       }) => {
@@ -134,7 +135,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
         setAnimationType(animation);
         handleSnackbarTimer(duration);
       },
-      [defaultAnimation, handleSnackbarTimer]
+      [defaultAnimation, defaultPosition, handleSnackbarTimer]
     );
 
     const handleHideMessage = React.useCallback(() => {

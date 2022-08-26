@@ -11,6 +11,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   children,
   duration,
   animation,
+  position,
   colorPalette,
   spaces,
   customAnimation,
@@ -59,6 +60,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         ref={snackbar}
         defaultDuration={duration}
         defaultAnimation={animation}
+        defaultPosition={position}
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
         spaces={spaces}

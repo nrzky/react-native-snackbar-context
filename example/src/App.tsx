@@ -12,6 +12,7 @@ const App = () => {
   return (
     <SnackbarProvider
       animation={SnackbarAnimations.CUSTOM}
+      position={SnackbarPositions.TOP}
       customAnimation={ScaleXAnimation}
     >
       <MainPage />
