@@ -35,6 +35,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
       textColor,
       indicatorStyle,
       spaces = Spaces,
+      isVisibleTimer,
       customAnimation,
       onHide,
       ...props
@@ -196,6 +197,7 @@ const Snackbar = React.forwardRef<SnackbarHandle, SnackbarProps>(
           style={indicatorStyle}
           offset={timerOffset}
           tintColor={textColor}
+          isVisibleTimer={isVisibleTimer}
         />
       </Animated.View>
     );

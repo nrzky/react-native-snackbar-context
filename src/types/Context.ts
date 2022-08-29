@@ -7,9 +7,10 @@ export interface SnackbarProviderProps {
   animation?: SnackbarProps['defaultAnimation'];
   position?: SnackbarProps['defaultPosition'];
   spaces?: SnackbarProps['spaces'];
-  customAnimation?: SnackbarProps['customAnimation'];
   style?: SnackbarProps['style'];
   textProps?: SnackbarProps['textProps'];
   textStyle?: SnackbarProps['textStyle'];
   indicatorStyle?: SnackbarProps['indicatorStyle'];
+  isVisibleTimer?: SnackbarProps['isVisibleTimer'];
+  customAnimation?: SnackbarProps['customAnimation'];
 }
