@@ -9,6 +9,8 @@ const ActionButton: React.FC<ActionButtonProps> = ({
   title,
   backgroundColor,
   textColor,
+  textProps,
+  textStyle,
   ...props
 }) => {
   return (
@@ -16,7 +18,12 @@ const ActionButton: React.FC<ActionButtonProps> = ({
       style={[styles.container, { backgroundColor: backgroundColor }]}
       {...props}
     >
-      <Text style={[styles.titleText, { color: textColor }]}>{title}</Text>
+      <Text
+        {...textProps}
+        style={[styles.titleText, { color: textColor }, textStyle]}
+      >
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { StyleSheet } from 'react-native';
 import {
   CustomAnimation,
   SnackbarAnimations,
@@ -12,8 +13,9 @@ const App = () => {
   return (
     <SnackbarProvider
       animation={SnackbarAnimations.CUSTOM}
-      position={SnackbarPositions.TOP}
+      position={SnackbarPositions.BOTTOM}
       customAnimation={ScaleXAnimation}
+      textStyle={styles.snackbarText}
     >
       <MainPage />
     </SnackbarProvider>
@@ -21,6 +23,12 @@ const App = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  snackbarText: {
+    fontWeight: 'bold',
+  },
+});
 
 const ScaleXAnimation: CustomAnimation = (params) => {
   if (params.position === SnackbarPositions.TOP) {

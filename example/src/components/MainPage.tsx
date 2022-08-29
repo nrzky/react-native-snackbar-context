@@ -22,7 +22,13 @@ const MainPage: React.FC = () => {
         message: 'React Native Snackbar Context',
         animation: SnackbarAnimations.CUSTOM,
         duration: SnackbarDurations.BLINK,
-        actions: [{ title: 'OK', onPress: hideMessage }],
+        actions: [
+          {
+            title: 'OK',
+            textStyle: styles.actionButtonText,
+            onPress: hideMessage,
+          },
+        ],
       });
     },
     [showMessage, hideMessage]
@@ -77,5 +83,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  actionButtonText: {
+    fontWeight: 'bold',
   },
 });

@@ -43,6 +43,8 @@ export interface ActionButtonProps extends TouchableOpacityProps {
   title: string;
   backgroundColor?: string;
   textColor?: string;
+  textProps?: TextProps;
+  textStyle?: TextStyle;
 }
 
 export interface TimerIndicatorProps extends ViewProps {
