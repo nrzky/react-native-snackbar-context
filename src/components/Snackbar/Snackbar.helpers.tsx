@@ -1,4 +1,4 @@
-import { Positions } from '../../constants';
+import { Positions, Animations as SnackbarAnimations } from '../../constants';
 import Animations from '../../animations';
 
 import type {
@@ -23,21 +23,21 @@ export const getAnimationStyle = (
   params: AnimationParams
 ) => {
   switch (type) {
-    case 'bounce':
+    case SnackbarAnimations.BOUNCE:
       return Animations.bounce(params);
-    case 'fade':
+    case SnackbarAnimations.FADE:
       return Animations.fade(params);
-    case 'zoom':
+    case SnackbarAnimations.ZOOM:
       return Animations.zoom(params);
-    case 'slide':
+    case SnackbarAnimations.ZOOM:
       return Animations.slide(params);
-    case 'slide-left':
+    case SnackbarAnimations.SLIDE_LEFT:
       return Animations.slideLeft(params);
-    case 'slide-right':
+    case SnackbarAnimations.SLIDE_RIGHT:
       return Animations.slideRight(params);
-    case 'flicker':
+    case SnackbarAnimations.FLICKER:
       return Animations.flicker(params);
-    case 'custom':
+    case SnackbarAnimations.CUSTOM:
       return Animations.slide(params);
     default:
       return {};
