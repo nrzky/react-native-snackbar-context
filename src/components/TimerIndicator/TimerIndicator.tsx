@@ -9,7 +9,12 @@ const TimerIndicator: React.FC<TimerIndicatorProps> = ({
   style,
   offset,
   tintColor,
+  isVisibleTimer = true,
 }) => {
+  if (!isVisibleTimer) {
+    return null;
+  }
+
   return (
     <Animated.View
       style={[

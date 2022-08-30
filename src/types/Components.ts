@@ -21,6 +21,7 @@ export interface SnackbarProps extends ViewProps {
   textStyle?: TextStyle;
   indicatorStyle?: ViewStyle;
   spaces?: SnackbarSpacesType;
+  isVisibleTimer?: boolean;
   customAnimation?: CustomAnimation;
   onHide?: (duration: number) => void;
 }
@@ -43,9 +44,12 @@ export interface ActionButtonProps extends TouchableOpacityProps {
   title: string;
   backgroundColor?: string;
   textColor?: string;
+  textProps?: TextProps;
+  textStyle?: TextStyle;
 }
 
 export interface TimerIndicatorProps extends ViewProps {
+  isVisibleTimer?: boolean;
   offset: Animated.Value;
   tintColor?: string;
 }

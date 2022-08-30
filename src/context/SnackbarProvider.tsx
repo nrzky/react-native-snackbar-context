@@ -14,6 +14,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
   position,
   colorPalette,
   spaces,
+  isVisibleTimer,
   customAnimation,
   ...props
 }) => {
@@ -64,6 +65,7 @@ const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
         backgroundColor={colors.backgroundColor}
         textColor={colors.textColor}
         spaces={spaces}
+        isVisibleTimer={isVisibleTimer}
         customAnimation={customAnimation}
         onHide={removeMessage}
       />
